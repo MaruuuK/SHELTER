@@ -6,49 +6,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shelter.Main page</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div id="background-start">
-        <div id="start-content">
-            <header>
-                <div id="cozy-house">
-                    <h1>Cozy House</h1>
-                    <p>Shelter for pets in Boston</p>
-                    <nav>
-                        <a href="#">About the shelter</a>
-                        <a href="#">Our pets</a>
-                        <a href="#">Help the shelter</a>
-                        <a href="#">Contacts</a>
-                    </nav>
-                </div>
-            </header>
-            <section id="not-only-section">
-                <div id="need-house">
-                    <h2>Not only people need a house</h2>
-                    <p>We offer to give a chance to a little and nice puppy with an extremely wide and open
-                        heart.
-                        He or
-                        she will love you more
-                        than anybody else in the world, you will see!</p>
-
-                    <button type="button">Make a friend</button>
-                </div>
-                <img src="../../assests/images/start-screen-puppy.png" alt="A start screen puppy">
-            </section>
-        </div>
+    <div class="bg-gradient">
+        <header class="main-content">
+                <h1>Cozy House</h1>
+                <p class="logo-subtitle">Shelter for pets in Boston</p>
+                <nav>
+                    <a href="#about-content" class="nav-item nav-item-active">About the shelter</a>
+                    <a href="" class="nav-item">Our pets</a>
+                    <a href="#help-content" class="nav-item">Help the shelter</a>
+                    <a href="#footer" class="nav-item">Contacts</a>
+                </nav>
+        </header>
+        <section class="main-content">
+            <div id="intro">
+                <h2 class="intro-header">Not only people<br>need a house</h2>
+                <p class="intro-text">We offer to give a chance to a little and nice puppy with an extremely wide and
+                    open
+                    heart.
+                    He or
+                    she will love you more
+                    than anybody else in the world, you will see!</p>
+                <a href="#pets-content" class="btn">Make a friend</a>
+            </div>
+            <img src="../../assests/images/start-screen-puppy.png" alt="A start screen puppy"
+                class="start-screen-puppy">
+        </section>
     </div>
-    <section id="about-section">
-        <div id="background-about">
-            <div id="about-content">
-                <img src="../../assests/images/about-pets.png" alt="About pets">
-                <h3>About the shelter “Cozy House”</h3>
-                <p>Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of
+    <section class="bg-about-help">
+        <div id="about-content" class="main-content">
+            <img src="../../assests/images/about-pets.png" alt="About pets" class="about-pets-img">
+            <div>
+                <h3 class="about-header">About the shelter<br>“Cozy House”</h3>
+                <p class="about-text">Currently we have 121 dogs and 342 cats on our hands and statistics show that
+                    only 20% of
                     them
                     will find a family. The
                     others will continue to live with us and will be waiting for a lucky chance to become dearly
                     loved.</p>
-                <p>We feed our wards with the best food and make sure that they do not get sick, feel
+                <p class="about-text">We feed our wards with the best food and make sure that they do not get sick,
+                    feel
                     comfortable
                     (including
                     psychologically) and well. We are supported by 87 volunteers and 28 employees of various
@@ -61,10 +62,10 @@
             </div>
         </div>
     </section>
-    <section id="our-friends-section">
-        <div id="background-our-friends">
-            <div id="our-friends-content">
-                <h3>Our friends who are looking for a house</h3>
+    <section id="pets">
+        <div id="bg-pets-addition" class="bg-pets-addition">
+            <div id="pets-content" class="main-content">
+                <h3>Our friends who<br>are looking for a house</h3>
                 <div id="katrine-cat">
                     <figure>
                         <img src="../../assests/images/pets-katrine.png" alt="Katrine cat">
@@ -107,14 +108,14 @@
                     </figure>
                     <button type="button">Learn more</button>
                 </div>
-                <button type="button">Get to know the rest</button>
+                <a href="" class="btn">Get to know the rest</a>
             </div>
         </div>
     </section>
-    <section id="help-section">
-        <div id="background-help">
-            <div id="help-content">
-                <h3>How you can help our shelter</h3>
+    <section id="help">
+        <div id="background-help" class="bg-about-help">
+            <div id="help-content" class="main-content">
+                <h3>How you can help<br>our shelter</h3>
                 <div id="pet-food">
                     <img src="../../assests/icons/icon-food.svg" alt="food">
                     <h4>Pet food</h4>
@@ -154,16 +155,16 @@
             </div>
         </div>
     </section>
-    <section id="in-addition-section">
-        <div id="backgroound-addition">
-            <div id="addition-content">
+    <section id="in-addition">
+        <div id="backgroound-addition" class="bg-pets-addition">
+            <div id="addition-content" class="main-content">
                 <img src="../../assests/images/donation-dog.png" alt="a puppy">
                 <div id="donation-information">
                     <h3>You can also make a donation</h3>
-                    <p>Name of the bank / Type of bank account</p>
+                    <h5>Name of the bank / Type of bank account</h5>
                     <div id="card-bank-number">
                         <img src="../../assests/icons/credit-card.svg" alt="credit card">
-                        <span>8380 2880 8028 8791 7435</span>
+                        <h4>8380 2880 8028 8791 7435</h4>
                     </div>
                     <p>Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum
                         at libero sagittis
@@ -175,15 +176,31 @@
         </div>
     </section>
     <footer>
-        <div id="backgroound-footer">
-            <div id="footer-content">
-                <div id="question-suggestion">
+        <div id="backgroound-footer" class="bg-gradient">
+            <div class="main-content">
+                <div id="footer" class="main-content">
                     <h3>For questions and suggestions</h3>
-
+                    <ul>
+                        <li>
+                            <a href=""><img src="../../assests/icons/icon-email.svg" alt="email"> email@shelter.com</a>
+                        </li>
+                        <li>
+                            <a href=""><img src="../../assests/icons/icon-phone.svg" alt="phone"> +13 674 567 75 54</a>
+                        </li>
+                    </ul>
                 </div>
-                <div id="visit">
+                <div id="visit"> v
                     <h3>We are waiting for your visit</h3>
-
+                    <ul>
+                        <li>
+                            <a href=""><img src="../../assests/icons/icon-marker.svg" alt="marker"> 1 Central Street,
+                                Boston (entrance from the store)</a>
+                        </li>
+                        <li>
+                            <a href=""><img src="../../assests/icons/icon-marker.svg" alt="marker"> 18 South Park,
+                                London</a>
+                        </li>
+                    </ul>
                 </div>
                 <img src="../../assests/images/footer-puppy.png" alt="puppy">
             </div>

@@ -1,0 +1,132 @@
+/**********************FONTS*********************/
+@font-face {
+    font-family: 'georgia normal';
+    src: url('../../assests/fonts/Georgia/georgia.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'arial normal';
+    src: url('../../assests/fonts/Arial/arial.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'arial italic';
+    src: url('../../assests/fonts/Arial/ariali.ttf') format('truetype');
+    font-style: italic;
+}
+
+* {
+    box-sizing: border-box;
+    font-weight: 400;
+    font-family: 'georgia normal';
+    font-size: 15px;
+}
+
+.bg-gradient {
+    background: url('../../assests/images/noise_transparent@2x.svg'),
+        radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 75%, #211F20 100%);
+
+}
+
+.main-content {
+    max-width: 1280px;
+    padding: 0 40px;
+}
+
+h1 {
+    margin: 0;
+    color: #F1CDB3;
+    letter-spacing: 6%;
+}
+
+.logo-subtitle {
+    margin: 10px 0;
+    font-family: 'arial normal';
+    color: #FFFFFF;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.nav-item {
+    text-decoration: none;
+    font-family: 'arial normal';
+    color: #CDCDCD;
+}
+
+.nav-item-active {
+    border-bottom: 3px solid #F1CDB3;
+    padding-bottom: 7px;
+    color: #FAFAFA;
+}
+
+.nav-item:hover:not(.nav-item-active) {
+    cursor: pointer;
+    color: #FAFAFA;
+}
+
+#intro {
+    width: 460px;
+}
+
+section:not(#intro) {
+    /* padding: 80px 40]\ 100px; */
+}
+
+.intro-header {
+    font-size: 44px;
+    color: #FFFFFF;
+}
+
+.intro-text {
+    font-family: 'arial normal';
+    color: #CDCDCD;
+    margin: 42px 0px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 45px;
+    background-color: #F1CDB3;
+    border-radius: 100px;
+    text-align: center;
+    cursor: pointer;
+    color: #292929;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #FDDCC4;
+}
+.start-screen-puppy {
+    width: 698px;
+    height: 728px;
+}
+
+/******************* ABOUT ****************/
+
+.bg-about-help {
+    background-color: #FFFFFF;
+}
+
+h3 {
+    font-size: 35px;
+    color: #545454;
+}
+
+.about-pets-img {
+    max-width: 300px;
+}
+
+.about-text {
+    font-family: 'arial normal';
+    color: #4C4C4C;
+    width: 430px;
+}
+
+.bg-pets-addition {
+    background-color: #F6F6F6;
+}
