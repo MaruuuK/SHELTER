@@ -30,6 +30,40 @@
 
 }
 
+section:not(#intro) {
+    padding: 80px 40px 100px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 45px;
+    background-color: #F1CDB3;
+    border-radius: 100px;
+    text-align: center;
+    cursor: pointer;
+    color: #292929;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.btn-light {
+    display: inline-block;
+    padding: 15px 45px;
+    border-radius: 100px;
+    text-align: center;
+    border: 2px solid #F1CDB3;
+    color: #292929;
+    cursor: pointer;
+    background-color: #FAFAFA;
+    margin: 30px 41.5px;
+}
+
 .main-content {
     max-width: 1280px;
     padding: 0 40px;
@@ -37,8 +71,15 @@
 
 h1 {
     margin: 0;
+    position:relative;
+}
+
+h1 a {
+    margin: 0;
     color: #F1CDB3;
-    letter-spacing: 6%;
+    text-decoration: none;
+    font-size: 32px;
+    letter-spacing: 0.06em;
 }
 
 .logo-subtitle {
@@ -46,7 +87,12 @@ h1 {
     font-family: 'arial normal';
     color: #FFFFFF;
     font-size: 13px;
-    letter-spacing: 1px;
+    position:absolute;
+    letter-spacing: 0.1em;
+}
+
+#logo {
+    margin: auto;
 }
 
 .nav-item {
@@ -70,10 +116,6 @@ h1 {
     width: 460px;
 }
 
-section:not(#intro) {
-    /* padding: 80px 40]\ 100px; */
-}
-
 .intro-header {
     font-size: 44px;
     color: #FFFFFF;
@@ -85,22 +127,6 @@ section:not(#intro) {
     margin: 42px 0px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 15px 45px;
-    background-color: #F1CDB3;
-    border-radius: 100px;
-    text-align: center;
-    cursor: pointer;
-    color: #292929;
-    letter-spacing: 0.06em;
-    text-decoration: none;
-}
-
-.btn:hover {
-    cursor: pointer;
-    background-color: #FDDCC4;
-}
 .start-screen-puppy {
     width: 698px;
     height: 728px;
@@ -129,4 +155,20 @@ h3 {
 
 .bg-pets-addition {
     background-color: #F6F6F6;
+}
+
+.pet-card {
+    width: 270px;
+    text-align: center;
+}
+
+.pet-card figcaption {
+    font-size: 20px;
+    color: #545454;
+    margin-top: 30px;
+}
+
+.pet-card figure {
+    width: 100%;
+    margin: 0;
 }
