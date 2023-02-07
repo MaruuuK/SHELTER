@@ -1,40 +1,60 @@
 /**********************FONTS*********************/
+
 @font-face {
     font-family: 'georgia normal';
-    src: url('../../assests/fonts/Georgia/georgia.ttf') format('truetype');
+    src: url('../../assets/fonts/Georgia/georgia.ttf');
     font-style: normal;
 }
 
 @font-face {
     font-family: 'arial normal';
-    src: url('../../assests/fonts/Arial/arial.ttf') format('truetype');
+    src: url('../../assets/fonts/Arial/arial.ttf');
     font-style: normal;
 }
 
 @font-face {
     font-family: 'arial italic';
-    src: url('../../assests/fonts/Arial/ariali.ttf') format('truetype');
+    src: url('../../assets/fonts/Arial/ariali.ttf');
     font-style: italic;
 }
+
+/*******************GENERAL**********************/
 
 * {
     box-sizing: border-box;
     font-weight: 400;
-    font-family: 'georgia normal';
+    font-family: 'georgia normal', sans-serif;
     font-size: 15px;
 }
 
 .bg-gradient {
-    background: url('../../assests/images/noise_transparent@2x.svg'),
+    background: url('../../assets/images/noise_transparent@2x.svg'),
         radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 75%, #211F20 100%);
 
 }
 
-section:not(#intro) {
-    padding: 80px 40px 100px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h3 {
+    font-size: 35px;
+    color: #545454;
+    line-height: 45.5px;
 }
 
 /**********************btn******************/
+
 .btn {
     display: inline-block;
     padding: 15px 45px;
@@ -65,41 +85,54 @@ section:not(#intro) {
     margin: 0;
 }
 
-.main-content {
-    max-width: 1280px;
-    padding: 0 40px;
-    overflow-x: hidden;
-    overflow-y: hidden;
+/*****************HEADER*****************/
+
+.header-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: start;
+    justify-content: start;
+    align-content: center;
+    align-items: center;
+    padding-top: 60px;
 }
 
-h1 {
-    margin: 0;
+#logo {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    gap: 10px;
 }
 
 h1 a {
-    margin: 0;
     color: #F1CDB3;
     text-decoration: none;
     font-size: 32px;
     letter-spacing: 0.06em;
+    margin: 0;
 }
 
 .logo-subtitle {
-    margin: 10px 0;
-    font-family: 'arial normal';
+    margin: 0;
+    font-family: 'arial normal', sans-serif;
     color: #FFFFFF;
     font-size: 13px;
     letter-spacing: 0.1em;
 }
 
-#logo {
-    margin: auto;
+/******************NAV******************/
+
+.nav-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 35px;
+    justify-self: end;
 }
 
 .nav-item {
     text-decoration: none;
-    font-family: 'arial normal';
+    font-family: 'arial normal', sans-serif;
     color: #CDCDCD;
+    line-height: 24px;
 }
 
 .nav-item-active {
@@ -113,24 +146,34 @@ h1 a {
     color: #FAFAFA;
 }
 
+/***********************START CONTENT************/
+
+#intro-content {
+    display: grid;
+    padding-top: 60px;
+    gap: 42px;
+    grid-template-columns: repeat(2, auto);
+}
+
 #intro {
-    width: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    align-items: flex-start;
+    padding-top: 163px;
 }
 
 .intro-header {
     font-size: 44px;
     color: #FFFFFF;
+    line-height: 57.2px;
 }
 
 .intro-text {
-    font-family: 'arial normal';
+    font-family: 'arial normal', sans-serif;
     color: #CDCDCD;
-    margin: 42px 0px;
-}
-
-.start-screen-puppy {
-    width: 698px;
-    height: 728px;
+    margin: 0;
+    line-height: 24px;
 }
 
 /******************* ABOUT ****************/
@@ -139,25 +182,44 @@ h1 a {
     background-color: #FFFFFF;
 }
 
-h3 {
-    font-size: 35px;
-    color: #545454;
-    letter-spacing: 0.06em;
-    line-height: 45.5px;
+#about-content{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 120px;
+    padding-top: 80px;
+    padding-bottom: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+}
+.about-text {
+    font-family: 'arial normal', sans-serif;
+    color: #4C4C4C;
+    max-width: 430px;
+    margin: 0;
+    line-height: 24px;
 }
 
 .about-pets-img {
     max-width: 300px;
 }
 
-.about-text {
-    font-family: 'arial normal';
-    color: #4C4C4C;
-    width: 430px;
-}
+/*********************PETS*******************/
 
 .bg-pets-addition {
     background-color: #F6F6F6;
+}
+
+.pets-help-header {
+    text-align: center;
+    padding-top: 80px;
+    line-height: 45.5px;
 }
 
 .pet-card {
@@ -176,14 +238,11 @@ h3 {
     margin: 0;
 }
 
-.btn-learn-more {
+/* .btn-learn-more {
     margin: 30px 41.5px;
-}
+} */
 
 /***************************HELP SECTION**************************/
-.pets-help-header {
-    text-align: center;
-}
 
 .help-item {
     text-align: center;
@@ -200,6 +259,11 @@ h3 {
     line-height: 23px;
     margin: 30px 0 0;
     letter-spacing: 0.06em;
+}
+
+.help-items {
+    display: flex;
+    flex-flow: row wrap;
 }
 
 /***************************DONATION DOG***************/
@@ -239,12 +303,12 @@ h5 {
     color: #545454;
     margin: 0;
     padding-left: 45px;
-    background: url('../../assests/icons/credit-card.svg') no-repeat left center;
+    background: url('../../assets/icons/credit-card.svg') no-repeat left center;
 }
 
 .donation-text p {
     margin: 20px 0 0;
-    font-family: 'arial italic';
+    font-family: 'arial italic', sans-serif;
     font-size: 12px;
     color: #B2B2B2;
     line-height: 18px;
@@ -258,4 +322,3 @@ h5 {
 #donation-block {
     display: flex;
 }
-
