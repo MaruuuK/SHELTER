@@ -23,13 +23,13 @@
 * {
     box-sizing: border-box;
     font-weight: 400;
-    font-family: 'georgia normal';
+    font-family: 'georgia normal', sans-serif;
     font-size: 15px;
     letter-spacing: 0.01em;
 }
 
 .bg-gradient {
-    background: url('../../assets/images/noise_transparent@2x.svg'),
+    background: url('../../assets/css/noise_transparent@2x.svg'),
         radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 75%, #211F20 100%);
 
 }
@@ -114,7 +114,7 @@ h1 a {
 
 .logo-subtitle {
     margin: 0;
-    font-family: 'arial normal';
+    font-family: 'arial normal', serif;
     color: #FFFFFF;
     font-size: 13px;
     letter-spacing: 0.1em;
@@ -131,7 +131,7 @@ h1 a {
 
 .nav-item {
     text-decoration: none;
-    font-family: 'arial normal';
+    font-family: 'arial normal', serif;
     color: #CDCDCD;
     line-height: 24px;
 }
@@ -170,7 +170,7 @@ h1 a {
 }
 
 .intro-text {
-    font-family: 'arial normal';
+    font-family: 'arial normal', serif;
     color: #CDCDCD;
     margin: 0;
     line-height: 24px;
@@ -200,7 +200,7 @@ h1 a {
 }
 
 .about-text {
-    font-family: 'arial normal';
+    font-family: 'arial normal', serif;
     color: #4C4C4C;
     max-width: 430px;
     margin: 0;
@@ -256,9 +256,23 @@ h1 a {
     margin: 0;
 }
 
-/* .btn-learn-more {
-    margin: 30px 41.5px;
-} */
+#pets-content {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    justify-items: center;
+    align-items: center;
+}
+.pets-header {
+    grid-column: 1 / -1;
+    margin-bottom: 60px;
+}
+
+.btn-rest {
+    grid-column: 1 / -1;
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+
 
 /***************************HELP SECTION**************************/
 
@@ -335,7 +349,7 @@ h5 {
 }
 
 .donation-text p {
-    font-family: 'arial italic';
+    font-family: 'arial italic', sans-serif;
     font-size: 12px;
     color: #B2B2B2;
     line-height: 18px;
