@@ -139,6 +139,7 @@ h1 a {
 .nav-item-active {
     border-bottom: 3px solid #F1CDB3;
     color: #FAFAFA;
+    cursor: default;
 }
 
 .nav-item:hover:not(.nav-item-active) {
@@ -257,20 +258,38 @@ h1 a {
 }
 
 #pets-content {
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-    justify-items: center;
+    text-align: center;
+}
+
+#slider {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
+
+#slider-container {
+    overflow: hidden;
+}
+
+#slider-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0 90px;
+    transition: margin 0.4s linear;
+}
+
 .pets-header {
-    grid-column: 1 / -1;
     margin-bottom: 60px;
 }
 
 .btn-rest {
-    grid-column: 1 / -1;
     margin-top: 60px;
     margin-bottom: 100px;
+}
+
+.btn-learn-more{
+    margin-bottom: 30px;
 }
 
 
