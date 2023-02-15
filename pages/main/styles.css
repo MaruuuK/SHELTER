@@ -277,6 +277,10 @@ h1 a {
     flex-direction: row;
     gap: 0 90px;
     transition: margin 0.4s linear;
+    -webkit-transition: margin 0.4s linear;
+    -moz-transition: margin 0.4s linear;
+    -ms-transition: margin 0.4s linear;
+    -o-transition: margin 0.4s linear;
 }
 
 .pets-header {

@@ -102,23 +102,20 @@ const cardsCount = getCardsCount();
 function getCards() {
     let result = [];
 
+    let currentlyUsed = [];
     while (result.length < cardsCount) {
         const id = getRandomNumber(pets.length);
         const data = pets[id];
-        if (data["inUse"] === true) {
+        if (currentlyUsed.includes(id)) {
             continue;
         }
+        currentlyUsed.push(id);
         result.push(
             cardTemplate
                 .replace("{{IMG_URL}}", data.img)
                 .replace("{{NAME}}", data.name)
                 .replace("{{ID}}", id)
         );
-        pets[id]["inUse"] = true;
-    }
-
-    for (let i = 0; i < pets.length; i++) {
-        pets[i]["inUse"] = false;
     }
 
     return result;
@@ -128,66 +125,76 @@ function getRandomNumber(limit) {
     return Math.floor(Math.random() * limit);
 }
 
-function getCardsCount () {
-   /* let  windowWidth = document.documentElement.clientWidth;
-
-    if (windowWidth < 768) {
-        return 1;
-    }
-    if (windowWidth < 1280) {
-        return 2;
-    }*/
+function getCardsCount() {
+    /* let  windowWidth = document.documentElement.clientWidth;
+ 
+     if (windowWidth < 768) {
+         return 1;
+     }
+     if (windowWidth < 1280) {
+         return 2;
+     }*/
     return 3;
 }
 
 function getSliderWidth() {
-   /* let windowWidth = document.documentElement.clientWidth;
-
-    if (windowWidth < 768) {
-        return 990;
-    }
-    if (windowWidth < 1280) {
-        return 990;
-    }*/
+    /* let windowWidth = document.documentElement.clientWidth;
+ 
+     if (windowWidth < 768) {
+         return 990;
+     }
+     if (windowWidth < 1280) {
+         return 990;
+     }*/
     return 990;
 }
 
 (function () {
-    let sliderContainer = document.getElementById("slider-container");
-    let sliderWrapper = document.getElementById("slider-wrapper");
-    let sliderLeft = document.getElementById("slider-left-btn");
-    let sliderRight = document.getElementById("slider-right-btn");
+    let container = document.getElementById("slider-container");
+    let wrapper = document.getElementById("slider-wrapper");
+    let leftBtn = document.getElementById("slider-left-btn");
+    let rightBtn = document.getElementById("slider-right-btn");
     let sliderWidth = getSliderWidth();
     let sliderWrapperWidth = sliderWidth;
     let sliderWrapperMargin = 0;
-    sliderContainer.style.width = sliderWidth + "px";
+    container.style.width = sliderWidth + "px";
 
     for (const card of getCards()) {
-        sliderWrapper.innerHTML = sliderWrapper.innerHTML + card;
+        wrapper.innerHTML = wrapper.innerHTML + card;
     }
 
-    sliderLeft.addEventListener("click", function (e) {
-        if (sliderWrapperMargin === 0) {
-            const transition = sliderWrapper.style.transitionDuration;
-            sliderWrapper.style.transitionDuration = "0s";
-            sliderWrapperMargin -= sliderWidth + 90;
-            sliderWrapper.style.marginLeft = sliderWrapperMargin + "px";
-            for (const card of getCards()) {
-                sliderWrapper.innerHTML = card + sliderWrapper.innerHTML;
-            }
-            sliderWrapper.style.transitionDuration = transition;
+    leftBtn.addEventListener("click", function (e) {
+        const slideLeft = function () {
+            sliderWrapperMargin += sliderWidth + 90;
+            wrapper.style.marginLeft = sliderWrapperMargin + "px";
         }
-        sliderWrapperMargin += sliderWidth + 90;
-        sliderWrapper.style.marginLeft = sliderWrapperMargin + "px";
+
+        if (sliderWrapperMargin === 0) {
+            const transit = wrapper.style.transition;
+            wrapper.style.transition = "none";
+            sliderWrapperMargin -= sliderWidth + 90;
+            wrapper.style.marginLeft = sliderWrapperMargin + "px";
+            for (const card of getCards()) {
+                wrapper.innerHTML = card + wrapper.innerHTML;
+            }
+            // Add timeout to make transition working
+            setTimeout(function () {
+                wrapper.style.transition = transit;
+                slideLeft();
+            }, 0)
+        } else {
+            slideLeft();
+        }
+
         e.preventDefault();
     });
-    
-    sliderRight.addEventListener("click", function (e) {
+
+    rightBtn.addEventListener("click", function (e) {
         sliderWrapperMargin -= sliderWidth + 90;
-        sliderWrapper.style.marginLeft = sliderWrapperMargin + "px";
+        wrapper.style.marginLeft = sliderWrapperMargin + "px";
         if (-sliderWrapperMargin >= sliderWrapperWidth - sliderWidth) {
             for (const card of getCards()) {
-                sliderWrapper.innerHTML = sliderWrapper.innerHTML + card;
+                wrapper.innerHTML = wrapper.innerHTML + card;
             }
         }
         e.preventDefault();
