@@ -94,28 +94,34 @@ const cardTemplate = `<div class="pet-card">
         <img src="{{IMG_URL}}" alt="">
         <figcaption>{{NAME}}</figcaption>
     </figure>
-    <a href="{{ID}}" class="btn btn-light btn-learn-more">Learn more</a>
+    <span data-id="{{ID}}" class="btn btn-light btn-learn-more">Learn more</span>
 </div>`;
 
 const cardsCount = getCardsCount();
-
-function getCards() {
+let isUsedCard = [];
+function getCards(leftUse, rightUse) {
     let result = [];
 
     let currentlyUsed = [];
     while (result.length < cardsCount) {
         const id = getRandomNumber(pets.length);
         const data = pets[id];
-        if (currentlyUsed.includes(id)) {
+        if ((leftUse && data["leftUse"]) || (rightUse && data["rightUse"]) || currentlyUsed.includes(id)) {
             continue;
         }
-        currentlyUsed.push(id);
         result.push(
             cardTemplate
                 .replace("{{IMG_URL}}", data.img)
                 .replace("{{NAME}}", data.name)
                 .replace("{{ID}}", id)
         );
+        currentlyUsed.push(id);
+    }
+
+    for (let id = 0; id < pets.length; id++) {
+        const isUsed = currentlyUsed.includes(id);
+        pets[id]["leftUse"] = isUsed && leftUse;
+        pets[id]["rightUse"] = isUsed && rightUse;
     }
 
     return result;
@@ -159,7 +165,7 @@ function getSliderWidth() {
     let sliderWrapperMargin = 0;
     container.style.width = sliderWidth + "px";
 
-    for (const card of getCards()) {
+    for (const card of getCards(true, true)) {
         wrapper.innerHTML = wrapper.innerHTML + card;
     }
 
@@ -174,7 +180,7 @@ function getSliderWidth() {
             wrapper.style.transition = "none";
             sliderWrapperMargin -= sliderWidth + 90;
             wrapper.style.marginLeft = sliderWrapperMargin + "px";
-            for (const card of getCards()) {
+            for (const card of getCards(true, false)) {
                 wrapper.innerHTML = card + wrapper.innerHTML;
             }
             // Add timeout to make transition working
@@ -193,8 +199,9 @@ function getSliderWidth() {
         sliderWrapperMargin -= sliderWidth + 90;
         wrapper.style.marginLeft = sliderWrapperMargin + "px";
         if (-sliderWrapperMargin >= sliderWrapperWidth - sliderWidth) {
-            for (const card of getCards()) {
+            for (const card of getCards(false, true)) {
                 wrapper.innerHTML = wrapper.innerHTML + card;
+                isUsedCard.push
             }
         }
         e.preventDefault();
