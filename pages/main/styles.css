@@ -7,6 +7,12 @@
 }
 
 @font-face {
+    font-family: 'georgia bold';
+    src: url('../../assets/fonts/Georgia/georgiab.ttf');
+    font-weight: bold;
+}
+
+@font-face {
     font-family: 'arial normal';
     src: url('../../assets/fonts/Arial/arial.ttf');
     font-style: normal;
@@ -240,7 +246,7 @@ h1 a {
     cursor: pointer;
 }
 
-.pet-card:hover a {
+.pet-card:hover span {
     cursor: pointer;
     background-color: #FDDCC4;
     border-color: #FDDCC4;
@@ -292,10 +298,102 @@ h1 a {
     margin-bottom: 100px;
 }
 
-.btn-learn-more{
+.btn-learn-more {
     margin-bottom: 30px;
 }
 
+
+/***************************POPUP*********************************/
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(41, 41, 41, 0.6);
+}
+
+#overlay.open {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn {
+    border-radius: 50%;
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    background: url(../../assets/icons/Close-btn.svg) no-repeat center center;
+    position: absolute;
+    top: -51px;
+    right: -41px;
+}
+
+.popup-window img {
+    display: block;
+    width: 500px;
+}
+
+.popup-window {
+    display: flex;
+    width: 900px;
+    max-height: 500px;
+    align-items: center;
+    border-radius: 9px;
+    background-color: #FAFAFA;
+    position: relative;
+}
+
+.pet-info {
+    display: flex;
+    flex-direction: column;
+    width: 351px;
+    margin: 50px 20px 78px 29px;
+}
+
+.pet-info h3 {
+    margin: 0;
+    color: #000000;
+    padding-bottom: 10px;
+}
+
+.pet-info h4 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    padding-bottom: 40px;
+}
+
+.pet-info p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 16.5px;
+    letter-spacing: 0.06em;
+    padding-bottom: 40px;
+}
+
+.pet-info ul {
+    margin: 0;
+    padding-left: 15px;
+    letter-spacing: 0.06em;
+}
+
+.pet-info ul li {
+    color: #F1CDB3;
+    margin-bottom: 10px;
+}
+
+.pet-info ul li span {
+    color: #000000;
+}
+
+.pet-info ul li span b {
+    font-family: 'georgia bold', serif;
+}
 
 /***************************HELP SECTION**************************/
 

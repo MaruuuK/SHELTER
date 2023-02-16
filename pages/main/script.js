@@ -1,3 +1,5 @@
+// Array of pets
+
 const pets = [
     {
         "name": "Jennifer",
@@ -89,16 +91,16 @@ const pets = [
     }
 ];
 
-const cardTemplate = `<div class="pet-card">
+// RANDOM CARDS FOR SLIDER
+const cardTemplate = `<div class="pet-card" data-id="{{ID}}">
     <figure>
-        <img src="{{IMG_URL}}" alt="">
+        <img src="{{IMG_URL}}" alt="{{ALT}}">
         <figcaption>{{NAME}}</figcaption>
     </figure>
-    <span data-id="{{ID}}" class="btn btn-light btn-learn-more">Learn more</span>
+    <span class="btn btn-light btn-learn-more">Learn more</span>
 </div>`;
 
 const cardsCount = getCardsCount();
-let isUsedCard = [];
 function getCards(leftUse, rightUse) {
     let result = [];
 
@@ -114,6 +116,8 @@ function getCards(leftUse, rightUse) {
                 .replace("{{IMG_URL}}", data.img)
                 .replace("{{NAME}}", data.name)
                 .replace("{{ID}}", id)
+                .replace("{{ALT}}", data.name)
+
         );
         currentlyUsed.push(id);
     }
@@ -155,6 +159,7 @@ function getSliderWidth() {
     return 990;
 }
 
+// SLIDER
 (function () {
     let container = document.getElementById("slider-container");
     let wrapper = document.getElementById("slider-wrapper");
@@ -201,9 +206,62 @@ function getSliderWidth() {
         if (-sliderWrapperMargin >= sliderWrapperWidth - sliderWidth) {
             for (const card of getCards(false, true)) {
                 wrapper.innerHTML = wrapper.innerHTML + card;
-                isUsedCard.push
             }
         }
         e.preventDefault();
     });
 })();
+
+
+// POPUP
+
+let overlay = document.querySelector('#overlay');
+let overlayClose = document.querySelector('.close-btn');
+let body = document.querySelector('body');
+
+function clickPopup(e) {
+    let idCard = e.currentTarget.dataset.id;
+    let img = document.getElementById('popup-img');
+    img.src = pets[idCard].img;
+    img.alt = pets[idCard].name;
+    document.getElementById('popup-name').innerHTML = pets[idCard].name;
+    document.getElementById('popup-type').innerHTML = pets[idCard].type;
+    document.getElementById('popup-breed').innerHTML = pets[idCard].breed;
+    document.getElementById('popup-description').innerHTML = pets[idCard].description;
+    document.getElementById('popup-age').innerHTML = pets[idCard].age;
+    document.getElementById('popup-inoculations').innerHTML = pets[idCard].inoculations;
+    document.getElementById('popup-diseases').innerHTML = pets[idCard].diseases;
+    document.getElementById('popup-parasites').innerHTML = pets[idCard].parasites;
+    open();
+}
+
+function open() {
+    overlay.classList.add('open');
+    body.style.overflow = 'hidden';
+}
+
+function close() {
+    overlay.classList.remove('open');
+    body.style.overflow = 'auto';
+}
+
+function closeEsc(e) {
+    if (e.key === 'Escape') {
+        close()
+    }
+}
+
+function closeOverlay(e) {
+    if (e.target.id === 'overlay') {
+        close();
+    }
+}
+
+
+let cards = document.querySelectorAll('.pet-card');
+cards.forEach(card => card.addEventListener('click', clickPopup));
+
+
+overlayClose.addEventListener('click', close);
+overlay.addEventListener('click', closeOverlay);
+window.addEventListener('keyup', closeEsc);
