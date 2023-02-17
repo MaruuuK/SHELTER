@@ -19,7 +19,7 @@
             </div>
             <nav class="nav-container">
                 <a href="../../pages/main/index.html" class="nav-item">About the shelter</a>
-                <a href="" class="nav-item  nav-item-active">Our pets</a>
+                <span class="nav-item  nav-item-active">Our pets</span>
                 <a href="../../pages/main/index.html#help-content" class="nav-item">Help the shelter</a>
                 <a href="#contacts" class="nav-item">Contacts</a>
             </nav>
@@ -29,75 +29,33 @@
         <div class="main-content">
             <h3>Our friends who<br>are looking for a house</h3>
             <div class="pets-cards">
-                <div class="pet-card">
-                    <figure>
-                        <img src="../../assets/images/pets-katrine.png" alt="">
-                        <figcaption>Katrine</figcaption>
-                    </figure>
-                    <a href="" class="btn btn-light btn-learn-more">Learn more</a>
-                </div>
-                <div class="pet-card">
-                    <figure>
-                        <img src="../../assets/images/pets-jennifer.png" alt="">
-                        <figcaption>Jennifer</figcaption>
-                    </figure>
-                    <a href="" class="btn btn-light btn-learn-more">Learn more</a>
-                </div>
-                <div class="pet-card">
-                    <figure>
-                        <img src="../../assets/images/pets-woody.png" alt="">
-                        <figcaption>Woody</figcaption>
-                    </figure>
-                    <a href="" class="btn btn-light btn-learn-more">Learn more</a>
-                </div>
-                <div class="pet-card">
-                    <figure>
-                        <img src="../../assets/images/pets-sophia.png" alt="">
-                        <figcaption>Sophia</figcaption>
-                    </figure>
-                    <a href="" class="btn btn-light btn-learn-more">Learn more</a>
-                </div>
-                <div class="pet-card">
-                    <figure>
-                        <img src="../../assets/images/pets-timmy.png" alt="">
-                        <figcaption>Timmy</figcaption>
-                    </figure>
-                    <a href="" class="btn btn-light btn-learn-more">Learn more</a>
-                </div>
-                <div class="pet-card">
-                    <figure>
-                        <img src="../../assets/images/pets-charly.png" alt="">
-                        <figcaption>Charly</figcaption>
-                    </figure>
-                    <a href="" class="btn btn-light btn-learn-more">Learn more</a>
-                </div>
-                <div class="pet-card">
-                    <figure>
-                        <img src="../../assets/images/pets-scarlett.png" alt="">
-                        <figcaption>Scarlett</figcaption>
-                    </figure>
-                    <a href="" class="btn btn-light btn-learn-more">Learn more</a>
-                </div>
-                <div class="pet-card">
-                    <figure>
-                        <img src="../../assets/images/pets-freddie.png" alt="">
-                        <figcaption>Freddie</figcaption>
-                    </figure>
-                    <a href="" class="btn btn-light btn-learn-more">Learn more</a>
-                </div>
             </div>
             <div class="btn-paginator-container">
-                <a href="" class="btn btn-light btn-nav disabled" ><img src="../../assets/icons/button-paginator-left2.svg"
-                        alt="button-paginator-left2"></a>
-                <a href="" class="btn btn-light btn-nav disabled btn-arrow-left"><img src="../../assets/icons/button-paginator-left1.svg"
-                        alt="button-paginator-left1"></a>
-                <a href="" class="btn btn-light btn-nav"><img src="../../assets/icons/button-paginator-1.svg"
-                        alt="button-paginator-1"></a>
-                <a href="" class="btn btn-light btn-nav btn-arrow-right"><img src="../../assets/icons/button-paginator-right1.svg"
-                        alt="button-paginator-right1"></a>
-                <a href="" class="btn btn-light btn-nav"><img src="../../assets/icons/button-paginator-right2.svg"
-                        alt="button-paginator-right2"></a>
+                <span class="btn btn-light btn-nav disabled btn-page" id="left-last-page" >&lt;&lt;</span>
+                <span class="btn btn-light btn-nav disabled btn-page" id="left-page">&lt;</span>
+                <span class="btn btn-nav btn-page" id="paginator-count"></span>
+                <span class="btn btn-light btn-nav btn-page" id="right-page">&gt;</span>
+                <span class="btn btn-light btn-nav btn-page" id="right-last-page">&gt;&gt;</span>
             </div>
+            <div id="overlay">
+            <div class="popup-window">
+                <span class="close-btn btn btn-light btn-nav"></span>
+                <div class="pets-modal">
+                <img id="popup-img" src="" alt="">
+                <div class="pet-info">
+                    <h3 id="popup-name"></h3>
+                    <h4><span id="popup-type"></span> - <span id="popup-breed"></span></h4>
+                    <p id="popup-description"></p>
+                    <ul>
+                        <li><span><b>Age:</b> <span id="popup-age"></span></span></li>
+                        <li><span><b>Inoculations:</b> <span id="popup-inoculations"></span></span></li>
+                        <li><span><b>Diseases:</b> <span id="popup-diseases"></span></span></li>
+                        <li><span><b>Parasites:</b> <span id="popup-parasites"></span></span></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
     <footer class="bg-gradient">
@@ -134,6 +92,8 @@
             <img src="../../assets/images/footer-puppy.png" alt="puppy">
         </div>
     </footer>
+
+    <script src="../../pages/pets/script.js"></script>
 </body>
 
 </html>

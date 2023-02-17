@@ -62,14 +62,13 @@ h3 {
     background-color: #F1CDB3;
     border-radius: 100px;
     text-align: center;
-    cursor: pointer;
     color: #292929;
     letter-spacing: 0.06em;
     text-decoration: none;
     cursor: default;
 }
 
-.btn:hover:not(.disabled) {
+.btn:hover:not(.disabled, .btn-page) {
     cursor: pointer;
     background-color: #FDDCC4;
     border-color: #FDDCC4;
@@ -88,16 +87,19 @@ h3 {
     padding: 16px 0 0;
 }
 
-.disabled{
+.disabled {
     border-color: #CDCDCD;
+    color: #CDCDCD;
 }
 
 .btn-arrow-left {
     padding-right: 3px;
 }
+
 .btn-arrow-right {
     padding-left: 3px;
 }
+
 .btn-paginator-container {
     display: flex;
     gap: 20px;
@@ -105,6 +107,24 @@ h3 {
     padding-bottom: 70px;
     align-items: center;
     justify-content: center;
+}
+
+.close-btn {
+    border-radius: 50%;
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    background: url(../../assets/icons/Close-btn.svg) no-repeat center center;
+    position: absolute;
+    top: -51px;
+    right: -41px;
+}
+
+.btn-page {
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    padding-top: 13px;
+    text-align: center;
 }
 
 /*****************HEADER*****************/
@@ -160,6 +180,7 @@ h1 a {
 .nav-item-active {
     border-bottom: 3px solid #F1CDB3;
     color: #545454;
+    cursor: default;
 }
 
 .nav-item:hover:not(.nav-item-active) {
@@ -169,7 +190,7 @@ h1 a {
 
 /***********************PETS SECTION***************/
 
-.main-content > h3 {
+.main-content>h3 {
     font-size: 35px;
     color: #545454;
     line-height: 45.5px;
@@ -177,7 +198,8 @@ h1 a {
     padding-bottom: 45px;
     padding-top: 80px;
 }
-#pets{
+
+#pets {
     background-color: #F6F6F6;
 }
 
@@ -196,7 +218,7 @@ h1 a {
     cursor: pointer;
 }
 
-.pet-card:hover a {
+.pet-card:hover span {
     cursor: pointer;
     background-color: #FDDCC4;
     border-color: #FDDCC4;
@@ -217,6 +239,98 @@ h1 a {
     display: grid;
     grid-template-columns: repeat(4, auto);
     gap: 30px 40px;
+}
+
+.btn-learn-more {
+    margin-bottom: 30px;
+}
+
+/***************************POPUP*********************************/
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(41, 41, 41, 0.6);
+}
+
+#overlay.open {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.popup-window img {
+    display: block;
+    width: 500px;
+}
+
+.popup-window {
+    position: relative;
+}
+
+.pets-modal {
+    overflow: hidden;
+    display: flex;
+    width: 900px;
+    max-height: 500px;
+    align-items: center;
+    border-radius: 9px;
+    background-color: #FAFAFA;
+
+}
+
+.pet-info {
+    display: flex;
+    flex-direction: column;
+    width: 351px;
+    margin: 50px 20px 78px 29px;
+}
+
+.pet-info h3 {
+    margin: 0;
+    color: #000000;
+    padding-bottom: 10px;
+}
+
+.pet-info h4 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    padding-bottom: 40px;
+}
+
+.pet-info p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 16.5px;
+    letter-spacing: 0.06em;
+    padding-bottom: 40px;
+}
+
+.pet-info ul {
+    margin: 0;
+    padding-left: 15px;
+    letter-spacing: 0.06em;
+}
+
+.pet-info ul li {
+    color: #F1CDB3;
+    margin-bottom: 10px;
+}
+
+.pet-info ul li span {
+    color: #000000;
+}
+
+.pet-info ul li span b {
+    font-family: 'georgia bold', serif;
 }
 
 /************************FOOTER**********************/
