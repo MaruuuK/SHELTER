@@ -18,7 +18,7 @@
                 <p class="logo-subtitle">Shelter for pets in Boston</p>
             </div>
             <nav class="nav-container">
-                <a href="#" class="nav-item nav-item-active">About the shelter</a>
+                <span class="nav-item nav-item-active">About the shelter</span>
                 <a href="../../pages/pets/index.html" class="nav-item">Our pets</a>
                 <a href="#help-content" class="nav-item">Help the shelter</a>
                 <a href="#contacts" class="nav-item">Contacts</a>
@@ -80,18 +80,20 @@
         </div>
         <div id="overlay">
             <div class="popup-window">
-                <span class="close-btn btn btn-light btn-nav""></span>
-                <img id="popup-img" src="" alt="">
-                <div class="pet-info">
-                    <h3 id="popup-name"></h3>
-                    <h4><span id="popup-type"></span> - <span id="popup-breed"></span></h4>
-                    <p id="popup-description"></p>
-                    <ul>
-                        <li><span><b>Age:</b> <span id="popup-age"></span></span></li>
-                        <li><span><b>Inoculations:</b> <span id="popup-inoculations"></span></span></li>
-                        <li><span><b>Diseases:</b> <span id="popup-diseases"></span></span></li>
-                        <li><span><b>Parasites:</b> <span id="popup-parasites"></span></span></li>
-                    </ul>
+                <span class="close-btn btn btn-light btn-nav"></span>
+                <div class="pets-modal">
+                    <img id="popup-img" src="" alt="">
+                    <div class="pet-info">
+                        <h3 id="popup-name"></h3>
+                        <h4><span id="popup-type"></span> - <span id="popup-breed"></span></h4>
+                        <p id="popup-description"></p>
+                        <ul>
+                            <li><span><b>Age:</b> <span id="popup-age"></span></span></li>
+                            <li><span><b>Inoculations:</b> <span id="popup-inoculations"></span></span></li>
+                            <li><span><b>Diseases:</b> <span id="popup-diseases"></span></span></li>
+                            <li><span><b>Parasites:</b> <span id="popup-parasites"></span></span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,7 +159,7 @@
     <footer class="bg-gradient">
         <div id="contacts" class="main-content">
             <div class="footer-questions">
-                <h3>For questions and suggestions</h3>
+                <h3>For questions<br>and suggestions</h3>
                 <ul class="list-of list-contacts">
                     <li class="contact-item">
                         <a href="mailto:email@shelter.com"><img src="../../assets/icons/icon-email.svg" alt="email">
@@ -170,7 +172,7 @@
                 </ul>
             </div>
             <div class="footer-location">
-                <h3>We are waiting for your visit</h3>
+                <h3>We are waiting<br>for your visit</h3>
                 <ul class="list-of list-locations">
                     <li class="contact-item">
                         <a href="https://goo.gl/maps/iii6tJPdTqmkNaLA6" target="_blank"><img

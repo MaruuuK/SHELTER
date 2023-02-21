@@ -136,26 +136,26 @@ function getRandomNumber(limit) {
 }
 
 function getCardsCount() {
-    /* let  windowWidth = document.documentElement.clientWidth;
- 
+    let  windowWidth = document.documentElement.clientWidth;
+
      if (windowWidth < 768) {
          return 1;
      }
      if (windowWidth < 1280) {
          return 2;
-     }*/
+     }
     return 3;
 }
 
 function getSliderWidth() {
-    /* let windowWidth = document.documentElement.clientWidth;
- 
+    let windowWidth = document.documentElement.clientWidth;
+
      if (windowWidth < 768) {
-         return 990;
+         return 270;
      }
      if (windowWidth < 1280) {
-         return 990;
-     }*/
+         return 600;
+     }
     return 990;
 }
 

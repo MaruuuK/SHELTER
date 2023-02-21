@@ -25,7 +25,6 @@
     font-weight: 400;
     font-family: 'georgia normal', sans-serif;
     font-size: 15px;
-    letter-spacing: 0.01em;
 }
 
 .bg-gradient {
@@ -62,10 +61,11 @@ h3 {
     background-color: #F1CDB3;
     border-radius: 100px;
     text-align: center;
+    cursor: pointer;
     color: #292929;
     letter-spacing: 0.06em;
     text-decoration: none;
-    cursor: default;
+    font-size: 17px;
 }
 
 .btn:hover:not(.disabled, .btn-page) {
@@ -103,8 +103,8 @@ h3 {
 .btn-paginator-container {
     display: flex;
     gap: 20px;
-    padding-top: 40px;
-    padding-bottom: 70px;
+    padding-top: 60px;
+    padding-bottom: 99px;
     align-items: center;
     justify-content: center;
 }
@@ -131,12 +131,13 @@ h3 {
 
 .header-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, auto);
     justify-items: start;
     justify-content: start;
     align-content: center;
     align-items: center;
     padding: 30px 0;
+    gap: 573px;
 }
 
 #logo {
@@ -157,8 +158,9 @@ h1 a {
     margin: 0;
     font-family: 'arial normal', serif;
     font-size: 13px;
-    letter-spacing: 0.1em;
+    letter-spacing: 1.4px;
     color: #292929;
+    text-align: end;
 }
 
 /******************NAV******************/
@@ -167,7 +169,6 @@ h1 a {
     display: grid;
     grid-template-columns: repeat(4, auto);
     gap: 35px;
-    justify-self: end;
 }
 
 .nav-item {
@@ -195,8 +196,9 @@ h1 a {
     color: #545454;
     line-height: 45.5px;
     text-align: center;
-    padding-bottom: 45px;
-    padding-top: 80px;
+    padding-bottom: 60px;
+    padding-top: 78px;
+    letter-spacing: 0.06em;
 }
 
 #pets {
@@ -227,7 +229,7 @@ h1 a {
 .pet-card figcaption {
     font-size: 20px;
     color: #545454;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .pet-card figure {
@@ -337,7 +339,7 @@ h1 a {
 
 #contacts {
     display: flex;
-    gap: 10%;
+    gap: 160px;
     padding-top: 40px;
 }
 
@@ -347,6 +349,7 @@ h1 a {
     font-size: 35px;
     line-height: 45.5px;
     color: #FFFFFF;
+    padding-top: 16px;
 }
 
 .list-of {

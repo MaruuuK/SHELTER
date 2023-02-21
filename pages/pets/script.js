@@ -147,7 +147,7 @@ function getPageCount() {
 let currentPage = 1;
 const petsCards = document.querySelector('.pets-cards');
 const paginationPage = document.getElementById('paginator-count');
-let paginationItems;
+
 
 
 function displayCards() {
@@ -161,7 +161,7 @@ function displayCards() {
         petsCards.innerHTML += cardTemplate
             .replace("{{IMG_URL}}", paginationItems[i].img)
             .replace("{{NAME}}", paginationItems[i].name)
-            .replace("{{ID}}", i)
+            .replace("{{ID}}", i + start)
             .replace("{{ALT}}", paginationItems[i].name);
     }
 
@@ -215,6 +215,8 @@ leftPage.addEventListener('click', function (e) {
     }
     currentPage--;
     displayCards();
+    rightLastPage.classList.remove('disabled');
+    rightPage.classList.remove('disabled');
     if (currentPage === 1) {
         leftPage.classList.add("disabled");
         leftLastPage.classList.add('disabled');
@@ -229,6 +231,8 @@ leftLastPage.addEventListener('click', function (e) {
     displayCards();
     leftPage.classList.add("disabled");
     leftLastPage.classList.add('disabled');
+    rightLastPage.classList.remove('disabled');
+    rightPage.classList.remove('disabled')
 })
 
 // POPUP
@@ -240,16 +244,16 @@ let body = document.querySelector('body');
 function clickPopup(e) {
     let idCard = e.currentTarget.dataset.id;
     let img = document.getElementById('popup-img');
-    img.src = paginationItems[idCard].img;
-    img.alt = paginationItems[idCard].name;
-    document.getElementById('popup-name').innerHTML = paginationItems[idCard].name;
-    document.getElementById('popup-type').innerHTML = paginationItems[idCard].type;
-    document.getElementById('popup-breed').innerHTML = paginationItems[idCard].breed;
-    document.getElementById('popup-description').innerHTML = paginationItems[idCard].description;
-    document.getElementById('popup-age').innerHTML = paginationItems[idCard].age;
-    document.getElementById('popup-inoculations').innerHTML = paginationItems[idCard].inoculations;
-    document.getElementById('popup-diseases').innerHTML = paginationItems[idCard].diseases;
-    document.getElementById('popup-parasites').innerHTML = paginationItems[idCard].parasites;
+    img.src = pets[idCard].img;
+    img.alt = pets[idCard].name;
+    document.getElementById('popup-name').innerHTML = pets[idCard].name;
+    document.getElementById('popup-type').innerHTML = pets[idCard].type;
+    document.getElementById('popup-breed').innerHTML = pets[idCard].breed;
+    document.getElementById('popup-description').innerHTML = pets[idCard].description;
+    document.getElementById('popup-age').innerHTML = pets[idCard].age;
+    document.getElementById('popup-inoculations').innerHTML = pets[idCard].inoculations;
+    document.getElementById('popup-diseases').innerHTML = pets[idCard].diseases;
+    document.getElementById('popup-parasites').innerHTML = pets[idCard].parasites;
     open();
 }
 
