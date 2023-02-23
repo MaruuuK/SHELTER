@@ -92,6 +92,7 @@ const pets = [
 ];
 
 // RANDOM CARDS FOR SLIDER
+
 const cardTemplate = `<div class="pet-card" data-id="{{ID}}">
     <figure>
         <img src="{{IMG_URL}}" alt="{{ALT}}">
@@ -100,7 +101,7 @@ const cardTemplate = `<div class="pet-card" data-id="{{ID}}">
     <span class="btn btn-light btn-learn-more">Learn more</span>
 </div>`;
 
-const cardsCount = getCardsCount();
+let cardsCount = getCardsCount();
 function getCards(leftUse, rightUse) {
     let result = [];
 
@@ -154,11 +155,22 @@ function getSliderWidth() {
          return 270;
      }
      if (windowWidth < 1280) {
-         return 600;
+         return 580;
      }
     return 990;
 }
 
+function getGap() {
+    if(cardsCount === 3) {
+        return 90;
+    }
+    if (cardsCount === 2) {
+        return 40;
+    }
+    return 0;
+}
+
+let gap = getGap();
 // SLIDER
 (function () {
     let container = document.getElementById("slider-container");
@@ -176,14 +188,14 @@ function getSliderWidth() {
 
     leftBtn.addEventListener("click", function (e) {
         const slideLeft = function () {
-            sliderWrapperMargin += sliderWidth + 90;
+            sliderWrapperMargin += sliderWidth + gap;
             wrapper.style.marginLeft = sliderWrapperMargin + "px";
         }
 
         if (sliderWrapperMargin === 0) {
             const transit = wrapper.style.transition;
             wrapper.style.transition = "none";
-            sliderWrapperMargin -= sliderWidth + 90;
+            sliderWrapperMargin -= sliderWidth + gap;
             wrapper.style.marginLeft = sliderWrapperMargin + "px";
             for (const card of getCards(true, false)) {
                 wrapper.innerHTML = card + wrapper.innerHTML;
@@ -201,7 +213,7 @@ function getSliderWidth() {
     });
 
     rightBtn.addEventListener("click", function (e) {
-        sliderWrapperMargin -= sliderWidth + 90;
+        sliderWrapperMargin -= sliderWidth + gap;
         wrapper.style.marginLeft = sliderWrapperMargin + "px";
         if (-sliderWrapperMargin >= sliderWrapperWidth - sliderWidth) {
             for (const card of getCards(false, true)) {
@@ -265,3 +277,8 @@ cards.forEach(card => card.addEventListener('click', clickPopup));
 overlayClose.addEventListener('click', close);
 overlay.addEventListener('click', closeOverlay);
 window.addEventListener('keyup', closeEsc);
+
+
+
+// BURGER MENU
+
