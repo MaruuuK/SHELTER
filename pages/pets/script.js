@@ -123,7 +123,7 @@ function getCardsCount() {
 const cardsCount = getCardsCount();
 let pageCount = getPageCount();
 
-(function() {
+(function () {
     for (let i = 0; i < pageCount; i++) {
         let currentlyUsed = [];
         while (currentlyUsed.length < cardsCount) {
@@ -155,7 +155,7 @@ function displayCards() {
 
     let start = cardsCount * (currentPage - 1);
     let end = start + cardsCount;
-    paginationItems = pets.slice(start, end);
+    let paginationItems = pets.slice(start, end);
 
     for (let i = 0; i < paginationItems.length; i++) {
         petsCards.innerHTML += cardTemplate
@@ -235,11 +235,32 @@ leftLastPage.addEventListener('click', function (e) {
     rightPage.classList.remove('disabled')
 })
 
-// POPUP
+//OVERLAY
 
-let overlay = document.querySelector('#overlay');
-let overlayClose = document.querySelector('.close-btn');
 let body = document.querySelector('body');
+
+function closeOverlay() {
+    body.classList.remove('overlay');
+    popup.classList.remove('open');
+    body.classList.remove('burger-menu');
+}
+
+body.addEventListener('click', function (e) {
+    if (e.target.nodeName === 'BODY') {
+        closeOverlay();
+    }
+});
+
+window.addEventListener('keyup', function (e) {
+    if (e.key === 'Escape') {
+        closeOverlay();
+    }
+});
+
+
+// POPUP
+let popup = document.getElementById('popup-window');
+let popupClose = document.querySelector('.close-btn');
 
 function clickPopup(e) {
     let idCard = e.currentTarget.dataset.id;
@@ -254,35 +275,10 @@ function clickPopup(e) {
     document.getElementById('popup-inoculations').innerHTML = pets[idCard].inoculations;
     document.getElementById('popup-diseases').innerHTML = pets[idCard].diseases;
     document.getElementById('popup-parasites').innerHTML = pets[idCard].parasites;
-    open();
+    body.classList.add('overlay');
+    popup.classList.add('open');
 }
 
-function open() {
-    overlay.classList.add('open');
-    body.style.overflow = 'hidden';
-}
-
-function close() {
-    overlay.classList.remove('open');
-    body.style.overflow = 'auto';
-}
-
-function closeEsc(e) {
-    if (e.key === 'Escape') {
-        close()
-    }
-}
-
-function closeOverlay(e) {
-    if (e.target.id === 'overlay') {
-        close();
-    }
-}
-
-
-
-
-
-overlayClose.addEventListener('click', close);
-overlay.addEventListener('click', closeOverlay);
-window.addEventListener('keyup', closeEsc);
+popupClose.addEventListener('click', function () {
+    closeOverlay();
+});

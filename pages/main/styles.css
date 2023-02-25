@@ -59,6 +59,21 @@ h3 {
     letter-spacing: 0.06em;
 }
 
+body.overlay {
+    overflow: hidden;
+}
+
+body.overlay:after {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(41, 41, 41, 0.6);
+}
+
 /**********************btn******************/
 
 .btn {
@@ -154,14 +169,8 @@ h1 a {
 
 /******************* BURGER MENU **********/
 
-[aria-controls="menu-list"] {
+.burger-btn {
     display: none;
-}
-
-
-.menu-item {
-    display: block;
-    width: 30px;
 }
 
 /***********************START CONTENT************/
@@ -312,24 +321,21 @@ h1 a {
 
 /***************************POPUP*********************************/
 
-#overlay {
-    display: none;
+#popup-window {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: none;
     z-index: 2;
-    background-color: rgba(41, 41, 41, 0.6);
 }
 
-#overlay.open {
-    display: grid;
-    align-items: center;
-    justify-content: center;
+#popup-window.open {
+    display: block;
 }
 
-.close-btn {
+#popup-window .close-btn {
     border-radius: 50%;
     display: inline-block;
     width: 52px;
@@ -340,13 +346,9 @@ h1 a {
     right: -41px;
 }
 
-.popup-window img {
+#popup-window img {
     display: block;
     width: 500px;
-}
-
-.popup-window {
-    position: relative;
 }
 
 .pets-modal {
@@ -653,7 +655,7 @@ h5 {
 
 }
 
-@media all and (min-width: 320px) and (max-width: 767px) {
+@media all and (max-width: 767px) {
     .main-content {
         max-width: 320px;
         margin: 0 auto;
@@ -665,33 +667,126 @@ h5 {
 
     .header-container {
         gap: 43px;
-        padding: 30px 0 0 10px;
-        flex-direction: row-reverse;
+        padding: 30px 10px 0;
+        max-width: 100%;
+        justify-content: space-between;
+        left: 0;
     }
 
-    [aria-controls="menu-list"] {
-        display: block;
-    }
-
-    .close-menu {
-        display: none;
-    }
+    /******************* BURGER MENU **********/
 
     .nav-container {
-        max-height: 0;
+        position: fixed;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        right: -320px;
+        transition: right 0.5s;
+        z-index: 2;
+    }
+
+    #logo {
+        transition: opacity 0.5s;
+    }
+
+    body.burger-menu #logo {
+        opacity: 0;
+    }
+
+    body.burger-menu .nav-container {
+        right: 0;
+    }
+
+    .nav-container .nav-item {
+        font-size: 32px;
+    }
+
+    /*.nav-container.in-active {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        grid-area: nav;
+        justify-self: center;
+    }*/
+
+    .logo-mobile {
+        grid-area: logo;
+    }
+
+    /*.burger-menu {
+        display: grid;
+        grid-template-areas: "logo btn" 'nav  nav';
+        gap: 158px 43px;
+        width: 320px;
+        height: 100vh;
+        background-color: #292929;
+        top: 0;
+        right: -320px;
+        transition: all 0.5s ;
+        -webkit-transition: all 0.5s ;
+        -moz-transition: all 0.5s ;
+        -ms-transition: all 0.5s ;
+        -o-transition: all 0.5s ;
+}*/
+
+    .burger-btn {
+        position: relative;
+        grid-area: btn;
+        padding: 0;
+        display: block;
+        width: 30px;
+        height: 22px;
+        cursor: pointer;
+        appearance: none;
+        background: none;
+        outline: none;
+        border: none;
+        z-index: 3;
+    }
+
+    .burger-btn .bar,
+    .burger-btn::after,
+    .burger-btn::before {
+        content: '';
+        padding: 0;
+        display: block;
+        width: 30px;
+        height: 2px;
+        background-color: #F1CDB3;
+        margin-bottom: 10px;
         transition: all 0.5s;
-        transform: rotateX(90deg)    ;
-        -webkit-transform: rotateX(90deg)    ;
-        -moz-transform: rotateX(90deg)    ;
-        -ms-transform: rotateX(90deg)    ;
-        -o-transform: rotateX(90deg)    ;
         -webkit-transition: all 0.5s;
         -moz-transition: all 0.5s;
         -ms-transition: all 0.5s;
         -o-transition: all 0.5s;
-}
+    }
 
+    .burger-btn.active::before {
+        transform: rotate(-90deg) translate(-10px, -10px);
+        -webkit-transform: rotate(-90deg) translate(-10px, -10px);
+        -moz-transform: rotate(-90deg) translate(-10px, -10px);
+        -ms-transform: rotate(-90deg) translate(-10px, -10px);
+        -o-transform: rotate(-90deg) translate(-10px, -10px);
+    }
 
+    .burger-btn.active .bar {
+        transform: rotate(-90deg) translate(2px, 0px);
+        -webkit-transform: rotate(-90deg) translate(2px, 0px);
+        -moz-transform: rotate(-90deg) translate(2px, 0px);
+        -ms-transform: rotate(-90deg) translate(2px, 0px);
+        -o-transform: rotate(-90deg) translate(2px, 0px);
+    }
+
+    .burger-btn.active::after {
+        transform: rotate(-90deg) translate(14px, 10px);
+        -webkit-transform: rotate(-90deg) translate(14px, 10px);
+        -moz-transform: rotate(-90deg) translate(14px, 10px);
+        -ms-transform: rotate(-90deg) translate(14px, 10px);
+        -o-transform: rotate(-90deg) translate(14px, 10px);
+    }
+
+    /****************OTHER SECTIONS*******************/
 
     #intro-content {
         flex-direction: column;
@@ -706,7 +801,7 @@ h5 {
     }
 
     #intro-content img {
-        padding-left: 70px;
+        padding-left: 40px;
         max-width: 569px;
     }
 
@@ -757,8 +852,8 @@ h5 {
     #slider {
         display: grid;
         grid-template-areas:
-        "card card"
-        "left right";
+            "card card"
+            "left right";
         gap: 20px 80px;
     }
 
@@ -767,7 +862,7 @@ h5 {
         justify-self: center;
     }
 
-    #slider-left-btn{
+    #slider-left-btn {
         grid-area: left;
         margin-left: 43px;
     }
@@ -776,9 +871,11 @@ h5 {
         grid-area: right;
         margin-right: 43px;
     }
+
     #slider-wrapper {
         gap: 0;
     }
+
     .help-items {
         display: grid;
         grid-template-columns: repeat(2, auto);

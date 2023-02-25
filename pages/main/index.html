@@ -11,13 +11,9 @@
 </head>
 
 <body>
-    <div class="bg-gradient">
-        <header class="main-content header-container menu">
-            <span aria-expanded="false" aria-controls="menu-list">
-                <span class="open-menu menu-item"><img src="../../assets/icons/burger- open.svg" alt=""></span>
-                <span class="close-menu menu-item"><img src="../../assets/icons/burger-close.svg" alt=""></span>
-            </span>
-            <div id="logo">
+    <div class="bg-gradient overlay-mobile">
+        <header class="main-content header-container">
+            <div id="logo" class="logo-mobile">
                 <h1><a href="index.html">Cozy House</a></h1>
                 <p class="logo-subtitle">Shelter for pets in Boston</p>
             </div>
@@ -27,6 +23,9 @@
                 <a href="#help-content" class="nav-item">Help the shelter</a>
                 <a href="#contacts" class="nav-item">Contacts</a>
             </nav>
+            <button class="burger-btn">
+                <div class="bar"></div>
+            </button>
         </header>
         <section id="intro-content" class="main-content">
             <div id="intro">
@@ -82,22 +81,20 @@
             </div>
             <a href="../pets/index.html" class="btn btn-rest">Get to know the rest</a>
         </div>
-        <div id="overlay">
-            <div class="popup-window">
-                <span class="close-btn btn btn-light btn-nav"></span>
-                <div class="pets-modal">
-                    <img id="popup-img" src="" alt="">
-                    <div class="pet-info">
-                        <h3 id="popup-name"></h3>
-                        <h4><span id="popup-type"></span> - <span id="popup-breed"></span></h4>
-                        <p id="popup-description"></p>
-                        <ul>
-                            <li><span><b>Age:</b> <span id="popup-age"></span></span></li>
-                            <li><span><b>Inoculations:</b> <span id="popup-inoculations"></span></span></li>
-                            <li><span><b>Diseases:</b> <span id="popup-diseases"></span></span></li>
-                            <li><span><b>Parasites:</b> <span id="popup-parasites"></span></span></li>
-                        </ul>
-                    </div>
+        <div id="popup-window">
+            <span class="close-btn btn btn-light btn-nav"></span>
+            <div class="pets-modal">
+                <img id="popup-img" src="" alt="">
+                <div class="pet-info">
+                    <h3 id="popup-name"></h3>
+                    <h4><span id="popup-type"></span> - <span id="popup-breed"></span></h4>
+                    <p id="popup-description"></p>
+                    <ul>
+                        <li><span><b>Age:</b> <span id="popup-age"></span></span></li>
+                        <li><span><b>Inoculations:</b> <span id="popup-inoculations"></span></span></li>
+                        <li><span><b>Diseases:</b> <span id="popup-diseases"></span></span></li>
+                        <li><span><b>Parasites:</b> <span id="popup-parasites"></span></span></li>
+                    </ul>
                 </div>
             </div>
         </div>

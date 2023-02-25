@@ -137,31 +137,31 @@ function getRandomNumber(limit) {
 }
 
 function getCardsCount() {
-    let  windowWidth = document.documentElement.clientWidth;
+    let windowWidth = document.documentElement.clientWidth;
 
-     if (windowWidth < 768) {
-         return 1;
-     }
-     if (windowWidth < 1280) {
-         return 2;
-     }
+    if (windowWidth < 768) {
+        return 1;
+    }
+    if (windowWidth < 1280) {
+        return 2;
+    }
     return 3;
 }
 
 function getSliderWidth() {
     let windowWidth = document.documentElement.clientWidth;
 
-     if (windowWidth < 768) {
-         return 270;
-     }
-     if (windowWidth < 1280) {
-         return 580;
-     }
+    if (windowWidth < 768) {
+        return 270;
+    }
+    if (windowWidth < 1280) {
+        return 580;
+    }
     return 990;
 }
 
 function getGap() {
-    if(cardsCount === 3) {
+    if (cardsCount === 3) {
         return 90;
     }
     if (cardsCount === 2) {
@@ -171,7 +171,10 @@ function getGap() {
 }
 
 let gap = getGap();
+
+
 // SLIDER
+
 (function () {
     let container = document.getElementById("slider-container");
     let wrapper = document.getElementById("slider-wrapper");
@@ -224,61 +227,63 @@ let gap = getGap();
     });
 })();
 
+// OVERLAY
+
+let body = document.querySelector('body');
+
+function closeOverlay() {
+    body.classList.remove('overlay');
+    popup.classList.remove('open');
+    body.classList.remove('burger-menu');
+}
+
+body.addEventListener('click', function (e) {
+    if (e.target.nodeName === 'BODY') {
+        closeOverlay();
+    }
+});
+
+window.addEventListener('keyup', function (e) {
+    if (e.key === 'Escape') {
+        closeOverlay();
+    }
+});
 
 // POPUP
 
-let overlay = document.querySelector('#overlay');
-let overlayClose = document.querySelector('.close-btn');
-let body = document.querySelector('body');
 
-function clickPopup(e) {
-    let idCard = e.currentTarget.dataset.id;
-    let img = document.getElementById('popup-img');
-    img.src = pets[idCard].img;
-    img.alt = pets[idCard].name;
-    document.getElementById('popup-name').innerHTML = pets[idCard].name;
-    document.getElementById('popup-type').innerHTML = pets[idCard].type;
-    document.getElementById('popup-breed').innerHTML = pets[idCard].breed;
-    document.getElementById('popup-description').innerHTML = pets[idCard].description;
-    document.getElementById('popup-age').innerHTML = pets[idCard].age;
-    document.getElementById('popup-inoculations').innerHTML = pets[idCard].inoculations;
-    document.getElementById('popup-diseases').innerHTML = pets[idCard].diseases;
-    document.getElementById('popup-parasites').innerHTML = pets[idCard].parasites;
-    open();
-}
+let popup = document.getElementById('popup-window');
+let popupClose = popup.querySelector(".close-btn");
 
-function open() {
-    overlay.classList.add('open');
-    body.style.overflow = 'hidden';
-}
+document.querySelectorAll('.pet-card')
+    .forEach(card => card.addEventListener('click', function (e) {
+        let idCard = e.currentTarget.dataset.id;
+        let img = document.getElementById('popup-img');
+        img.src = pets[idCard].img;
+        img.alt = pets[idCard].name;
+        document.getElementById('popup-name').innerHTML = pets[idCard].name;
+        document.getElementById('popup-type').innerHTML = pets[idCard].type;
+        document.getElementById('popup-breed').innerHTML = pets[idCard].breed;
+        document.getElementById('popup-description').innerHTML = pets[idCard].description;
+        document.getElementById('popup-age').innerHTML = pets[idCard].age;
+        document.getElementById('popup-inoculations').innerHTML = pets[idCard].inoculations;
+        document.getElementById('popup-diseases').innerHTML = pets[idCard].diseases;
+        document.getElementById('popup-parasites').innerHTML = pets[idCard].parasites;
+        body.classList.add('overlay');
+        popup.classList.add('open');
+    }));
 
-function close() {
-    overlay.classList.remove('open');
-    body.style.overflow = 'auto';
-}
-
-function closeEsc(e) {
-    if (e.key === 'Escape') {
-        close()
-    }
-}
-
-function closeOverlay(e) {
-    if (e.target.id === 'overlay') {
-        close();
-    }
-}
-
-
-let cards = document.querySelectorAll('.pet-card');
-cards.forEach(card => card.addEventListener('click', clickPopup));
-
-
-overlayClose.addEventListener('click', close);
-overlay.addEventListener('click', closeOverlay);
-window.addEventListener('keyup', closeEsc);
-
-
+popupClose.addEventListener('click', function () {
+    closeOverlay();
+});
 
 // BURGER MENU
 
+document.querySelector('.burger-btn').addEventListener('click', function () {
+    if (body.classList.contains('burger-menu')) {
+        closeOverlay();
+    } else {
+        body.classList.add('burger-menu');
+        body.classList.add('overlay');
+    }
+});
