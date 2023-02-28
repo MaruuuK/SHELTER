@@ -93,7 +93,7 @@ const pets = [
 
 // RANDOM CARDS FOR SLIDER
 
-const cardTemplate = `<div class="pet-card" data-id="{{ID}}">
+const cardTemplate = `<div class="pet-card" onclick="openCardPopup({{ID}})">
     <figure>
         <img src="{{IMG_URL}}" alt="{{ALT}}">
         <figcaption>{{NAME}}</figcaption>
@@ -238,7 +238,7 @@ function closeOverlay() {
 }
 
 body.addEventListener('click', function (e) {
-    if (e.target.nodeName === 'BODY') {
+    if (e.target.nodeName === 'BODY' || e.target.className === "nav-item") {
         closeOverlay();
     }
 });
@@ -249,29 +249,27 @@ window.addEventListener('keyup', function (e) {
     }
 });
 
-// POPUP
 
+// POPUP
 
 let popup = document.getElementById('popup-window');
 let popupClose = popup.querySelector(".close-btn");
 
-document.querySelectorAll('.pet-card')
-    .forEach(card => card.addEventListener('click', function (e) {
-        let idCard = e.currentTarget.dataset.id;
-        let img = document.getElementById('popup-img');
-        img.src = pets[idCard].img;
-        img.alt = pets[idCard].name;
-        document.getElementById('popup-name').innerHTML = pets[idCard].name;
-        document.getElementById('popup-type').innerHTML = pets[idCard].type;
-        document.getElementById('popup-breed').innerHTML = pets[idCard].breed;
-        document.getElementById('popup-description').innerHTML = pets[idCard].description;
-        document.getElementById('popup-age').innerHTML = pets[idCard].age;
-        document.getElementById('popup-inoculations').innerHTML = pets[idCard].inoculations;
-        document.getElementById('popup-diseases').innerHTML = pets[idCard].diseases;
-        document.getElementById('popup-parasites').innerHTML = pets[idCard].parasites;
-        body.classList.add('overlay');
-        popup.classList.add('open');
-    }));
+function openCardPopup(idCard) {
+    let img = document.getElementById('popup-img');
+    img.src = pets[idCard].img;
+    img.alt = pets[idCard].name;
+    document.getElementById('popup-name').innerHTML = pets[idCard].name;
+    document.getElementById('popup-type').innerHTML = pets[idCard].type;
+    document.getElementById('popup-breed').innerHTML = pets[idCard].breed;
+    document.getElementById('popup-description').innerHTML = pets[idCard].description;
+    document.getElementById('popup-age').innerHTML = pets[idCard].age;
+    document.getElementById('popup-inoculations').innerHTML = pets[idCard].inoculations;
+    document.getElementById('popup-diseases').innerHTML = pets[idCard].diseases;
+    document.getElementById('popup-parasites').innerHTML = pets[idCard].parasites;
+    body.classList.add('overlay');
+    popup.classList.add('open');
+}
 
 popupClose.addEventListener('click', function () {
     closeOverlay();
