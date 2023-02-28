@@ -246,7 +246,7 @@ function closeOverlay() {
 }
 
 body.addEventListener('click', function (e) {
-    if (e.target.nodeName === 'BODY') {
+    if (e.target.nodeName === 'BODY' || e.target.className === "nav-item") {
         closeOverlay();
     }
 });
@@ -261,6 +261,7 @@ window.addEventListener('keyup', function (e) {
 // POPUP
 let popup = document.getElementById('popup-window');
 let popupClose = document.querySelector('.close-btn');
+
 
 function clickPopup(e) {
     let idCard = e.currentTarget.dataset.id;
@@ -277,8 +278,22 @@ function clickPopup(e) {
     document.getElementById('popup-parasites').innerHTML = pets[idCard].parasites;
     body.classList.add('overlay');
     popup.classList.add('open');
+    if (cardsCount === 3) {
+        img.style.display = 'none';
+    }
 }
 
 popupClose.addEventListener('click', function () {
     closeOverlay();
+});
+
+// BURGER MENU
+
+document.querySelector('.burger-btn').addEventListener('click', function () {
+    if (body.classList.contains('burger-menu')) {
+        closeOverlay();
+    } else {
+        body.classList.add('burger-menu');
+        body.classList.add('overlay');
+    }
 });
