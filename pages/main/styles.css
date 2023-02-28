@@ -731,7 +731,6 @@ h5 {
         overflow: hidden;
         display: flex;
         width: 630px;
-        max-height: 350px;
         align-items: center;
         border-radius: 9px;
         background-color: #FAFAFA;
@@ -743,7 +742,6 @@ h5 {
 
     .pet-info {
         width: 260px;
-        height: 303px;
         margin: 14px 9px 37px 11px;
     }
 
@@ -1113,7 +1111,6 @@ h5 {
 
     .pets-modal {
         width: 240px;
-        height: 341px;
     }
 
     .pet-info h3 {
