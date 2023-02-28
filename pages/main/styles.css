@@ -63,7 +63,7 @@ body.overlay {
     overflow: hidden;
 }
 
-body.overlay:after {
+body.overlay::after {
     content: "";
     display: block;
     position: fixed;
@@ -111,7 +111,6 @@ body.overlay:after {
 
 .header-container {
     display: flex;
-    justify-items: start;
     justify-content: start;
     align-items: center;
     padding-top: 60px;
@@ -143,7 +142,7 @@ h1 a {
 
 /******************NAV******************/
 
-.nav-container {
+.nav-container .nav-items {
     display: grid;
     grid-template-columns: repeat(4, auto);
     gap: 35px;
@@ -167,11 +166,6 @@ h1 a {
     color: #FAFAFA;
 }
 
-/******************* BURGER MENU **********/
-
-.burger-btn {
-    display: none;
-}
 
 /***********************START CONTENT************/
 
@@ -244,7 +238,7 @@ h1 a {
 
 .pets-help-header {
     text-align: center;
-    padding-top: 80px;
+    margin-top: 80px;
     line-height: 45.5px;
     margin-bottom: 60px;
 }
@@ -369,23 +363,27 @@ h1 a {
 }
 
 .pet-info h3 {
-    margin: 0;
     color: #000000;
-    padding-bottom: 10px;
+    margin: 0 0 13px;
+}
+
+.pet-info #popup-type,
+#popup-breed {
+    font-size: 20px;
+    letter-spacing: 0.06em;
+
 }
 
 .pet-info h4 {
     margin: 0;
-    font-size: 20px;
-    line-height: 23px;
-    letter-spacing: 0.06em;
     padding-bottom: 40px;
+    letter-spacing: 0.06em;
+    font-size: 20px;
 }
 
 .pet-info p {
     margin: 0;
     font-size: 15px;
-    line-height: 16.5px;
     letter-spacing: 0.06em;
     padding-bottom: 40px;
 }
@@ -507,7 +505,7 @@ h5 {
 
 /************************FOOTER**********************/
 
-#contacts {
+#footer {
     display: grid;
     grid-template-areas:
         "contacts   locations dog";
@@ -515,7 +513,7 @@ h5 {
     padding-top: 40px;
 }
 
-#contacts h3 {
+#footer h3 {
     margin: 0;
     letter-spacing: 0.06em;
     font-size: 35px;
@@ -537,7 +535,7 @@ h5 {
     gap: 40px;
 }
 
-.footer-questions {
+.footer-contacts {
     grid-area: contacts;
     display: flex;
     flex-direction: column;
@@ -575,43 +573,88 @@ h5 {
     grid-area: dog;
 }
 
-/**************RESPONSIVE DESIGN **************/
+/******************* BURGER MENU **********/
 
-@media all and (min-width: 768px) and (max-width: 1279px) {
+.burger-btn {
+    display: none;
+}
+
+#logo-burger {
+    display: none;
+}
+
+#logo-burger h1 a {
+    color: #F1CDB3;
+    text-decoration: none;
+    font-size: 32px;
+    letter-spacing: 0.06em;
+    margin: 0;
+}
+
+#logo-burger .logo-subtitle {
+    margin: 0;
+    font-family: 'arial normal', serif;
+    color: #FFFFFF;
+    font-size: 13px;
+    letter-spacing: 1.4px;
+    text-align: end;
+}
+
+/*********************RESPONSIVE DESIGN 768PX***************/
+
+@media all and (max-width: 1279.5px) {
     .main-content {
-        max-width: 768px;
+        max-width: none;
         margin: 0 auto;
     }
 
     .header-container {
-        gap: 81px;
+        gap: 0;
         padding: 30px;
+        justify-content: space-between;
     }
 
     #intro-content {
         flex-direction: column;
         gap: 100px;
-        padding: 30px 0 0 100px;
+        margin-top: 30px;
+        padding: 0 100px 0 100px;
     }
 
-    #intro {
-        padding: 0 0 0 55px;
-        max-width: 460px;
+    #intro-content .intro-header {
+        line-height: 57.2px;
+    }
 
+    #intro-content #intro {
+        padding: 0 54px 0 55px;
+    }
+
+    #intro-content #intro .btn {
+        align-self: center;
     }
 
     #intro-content img {
-        padding-left: 70px;
-        max-width: 569px;
-    }
-
-    #intro .btn {
+        margin-left: 130px;
+        width: 569px;
         align-self: center;
     }
 
     #about-content {
         flex-direction: column-reverse;
         gap: 80px;
+    }
+
+    .about-text {
+        max-width: none;
+    }
+
+    .about-info {
+
+        margin: 0px 168px 0 168px;
+    }
+
+    .about-info h3 {
+        line-height: 45.5px;
     }
 
     #slider-wrapper {
@@ -621,16 +664,24 @@ h5 {
     #slider {
         padding-left: 30px;
         padding-right: 30px;
+        gap: 12px;
+        justify-content: center;
     }
 
     .btn-rest {
         padding: 15px 44.5px;
     }
 
+    #help-content .pets-help-header {
+        margin-bottom: 58px;
+    }
+
     .help-items {
         display: grid;
         grid-template-columns: repeat(3, auto);
-        gap: 55px 60px;
+        gap: 53px 12%;
+        justify-content: space-evenly;
+        margin: 0 75px;
     }
 
     #donation-block {
@@ -640,58 +691,130 @@ h5 {
         padding-bottom: 100px;
     }
 
-    #contacts {
-        display: grid;
-        gap: 65px 60px;
-        grid-template-areas:
-            "contacts    locations"
-            "dog         dog";
-        padding: 30px 30px 0 30px;
+    .donation-text h3 {
+        line-height: 45.5px;
     }
 
-    #contacts img {
-        justify-self: center;
+    .donation-text {
+        max-width: none;
+        margin: 0 194px;
+    }
+
+    #footer {
+        display: grid;
+        grid-template-areas:
+            "contacts location"
+            "dog dog";
+        padding: 30px 30px 0;
+        gap: 65px 8.5%;
+        justify-content: space-evenly;
+        justify-items: center;
+    }
+
+    .footer-contacts {
+        grid-area: contacts;
+    }
+
+    .footer-location {
+        grid-area: location;
+    }
+
+    #footer img {
+        grid-area: dog;
+    }
+
+    #footer h3 {
+        padding-top: 0;
+    }
+
+    .pets-modal {
+        overflow: hidden;
+        display: flex;
+        width: 630px;
+        max-height: 350px;
+        align-items: center;
+        border-radius: 9px;
+        background-color: #FAFAFA;
+    }
+
+    #popup-window img {
+        width: 350px;
+    }
+
+    .pet-info {
+        width: 260px;
+        height: 303px;
+        margin: 14px 9px 37px 11px;
+    }
+
+    .pet-info h3 {
+        margin: 0 0 13px;
+    }
+
+    .pet-info h4 {
+        padding-bottom: 20px;
+        letter-spacing: 0;
+    }
+
+    .pet-info p {
+        font-size: 13px;
+        padding-bottom: 20px;
+        line-height: 14.3px;
+        letter-spacing: 0.05em;
+    }
+
+    .pet-info ul li {
+        margin-bottom: 6px;
     }
 
 }
 
-@media all and (max-width: 767px) {
-    .main-content {
-        max-width: 320px;
-        margin: 0 auto;
-    }
-
-    h3 {
-        font-size: 25px;
-    }
+@media all and (max-width: 767.5px) {
 
     .header-container {
-        gap: 43px;
-        padding: 30px 10px 0;
-        max-width: 100%;
+        padding: 30px 50px 30px 10px;
+        gap: 16.5%;
         justify-content: space-between;
-        left: 0;
+        overflow-y: auto;
+        position: relative;
     }
-
-    /******************* BURGER MENU **********/
 
     .nav-container {
         position: fixed;
-        background: #000;
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
+        background: #292929;
+        display: grid;
+        gap: 0;
+        padding: 30px 10px 0;
         right: -320px;
+        top: 0;
+        height: 100vh;
+        width: 320px;
         transition: right 0.5s;
         z-index: 2;
+        align-items: stretch;
+        justify-items: start;
     }
 
-    #logo {
-        transition: opacity 0.5s;
+    .nav-container .nav-items {
+        display: flex;
+        gap: 0;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+        height: 100%;
+        justify-self: center;
     }
 
     body.burger-menu #logo {
         opacity: 0;
+    }
+
+    body.burger-menu #logo-burger {
+        position: relative;
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        gap: 10px;
+        align-self: flex-start;
     }
 
     body.burger-menu .nav-container {
@@ -700,39 +823,25 @@ h5 {
 
     .nav-container .nav-item {
         font-size: 32px;
+        color: #CDCDCD;
+        margin-top: 68px;
     }
 
-    /*.nav-container.in-active {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        grid-area: nav;
-        justify-self: center;
-    }*/
-
-    .logo-mobile {
-        grid-area: logo;
+    .nav-container .nav-item:nth-child(4) {
+        margin-bottom: 68px;
     }
 
-    /*.burger-menu {
-        display: grid;
-        grid-template-areas: "logo btn" 'nav  nav';
-        gap: 158px 43px;
-        width: 320px;
-        height: 100vh;
-        background-color: #292929;
-        top: 0;
-        right: -320px;
-        transition: all 0.5s ;
-        -webkit-transition: all 0.5s ;
-        -moz-transition: all 0.5s ;
-        -ms-transition: all 0.5s ;
-        -o-transition: all 0.5s ;
-}*/
+    .nav-container .nav-item-active {
+        color: #FAFAFA;
+    }
+
+    .nav-container .nav-item:hover:not(.nav-item-active) {
+        cursor: pointer;
+        color: #FAFAFA;
+    }
 
     .burger-btn {
         position: relative;
-        grid-area: btn;
         padding: 0;
         display: block;
         width: 30px;
@@ -754,7 +863,7 @@ h5 {
         width: 30px;
         height: 2px;
         background-color: #F1CDB3;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
         -moz-transition: all 0.5s;
@@ -762,15 +871,15 @@ h5 {
         -o-transition: all 0.5s;
     }
 
-    .burger-btn.active::before {
-        transform: rotate(-90deg) translate(-10px, -10px);
-        -webkit-transform: rotate(-90deg) translate(-10px, -10px);
-        -moz-transform: rotate(-90deg) translate(-10px, -10px);
-        -ms-transform: rotate(-90deg) translate(-10px, -10px);
-        -o-transform: rotate(-90deg) translate(-10px, -10px);
+    body.burger-menu .burger-btn:before {
+        transform: rotate(-90deg) translate(-8px, -10px);
+        -webkit-transform: rotate(-90deg) translate(-8px, -10px);
+        -moz-transform: rotate(-90deg) translate(-8px, -10px);
+        -ms-transform: rotate(-90deg) translate(-8px, -10px);
+        -o-transform: rotate(-90deg) translate(-8px, -10px);
     }
 
-    .burger-btn.active .bar {
+    body.burger-menu .burger-btn .bar {
         transform: rotate(-90deg) translate(2px, 0px);
         -webkit-transform: rotate(-90deg) translate(2px, 0px);
         -moz-transform: rotate(-90deg) translate(2px, 0px);
@@ -778,31 +887,45 @@ h5 {
         -o-transform: rotate(-90deg) translate(2px, 0px);
     }
 
-    .burger-btn.active::after {
-        transform: rotate(-90deg) translate(14px, 10px);
-        -webkit-transform: rotate(-90deg) translate(14px, 10px);
-        -moz-transform: rotate(-90deg) translate(14px, 10px);
-        -ms-transform: rotate(-90deg) translate(14px, 10px);
-        -o-transform: rotate(-90deg) translate(14px, 10px);
+    body.burger-menu .burger-btn::after {
+        transform: rotate(-90deg) translate(12px, 10px);
+        -webkit-transform: rotate(-90deg) translate(12px, 10px);
+        -moz-transform: rotate(-90deg) translate(12px, 10px);
+        -ms-transform: rotate(-90deg) translate(12px, 10px);
+        -o-transform: rotate(-90deg) translate(12px, 10px);
     }
 
-    /****************OTHER SECTIONS*******************/
+    body.burger-menu .burger-btn:before,
+    body.burger-menu .burger-btn .bar,
+    body.burger-menu .burger-btn::after {
+        background-color: #F1CDB3;
+    }
+
+    .main-content h3 {
+        font-size: 25px;
+        line-height: 32.5px;
+        padding-top: 42px;
+    }
 
     #intro-content {
         flex-direction: column;
         gap: 105px;
-        padding: 60px 0 0 0;
+        margin-top: 30px;
+        padding: 0 10px;
     }
 
-    #intro {
+    #intro-content .intro-header {
+        line-height: 32.5px;
+    }
+
+    #intro-content #intro {
         padding: 0;
-        max-width: 460px;
         align-items: center;
     }
 
     #intro-content img {
-        padding-left: 40px;
-        max-width: 569px;
+        margin-left: 40px;
+        width: 260px;
     }
 
     .intro-header {
@@ -813,28 +936,33 @@ h5 {
 
     .intro-text {
         text-align: center;
-        max-width: 300px;
     }
 
     #about-content {
         flex-direction: column-reverse;
         gap: 42px;
-        padding: 42px 10px;
+        padding: 0 10px 42px 10px;
         align-items: center;
     }
 
     .about-info {
         gap: 22px;
+        margin: 0;
         align-items: center;
     }
 
     .about-text {
         text-align: justify;
+        padding: 0 15px;
     }
 
     .about-header {
         text-align: center;
         padding-bottom: 3px;
+    }
+
+    .about-pets-img {
+        max-width: 260px;
     }
 
     .pets-help-header {
@@ -876,23 +1004,37 @@ h5 {
         gap: 0;
     }
 
+
+    #help-content .pets-help-header {
+        margin: 0;
+    }
+
     .help-items {
         display: grid;
         grid-template-columns: repeat(2, auto);
-        gap: 30px;
-        padding-bottom: 42px;
-        padding-left: 15px;
-        padding-right: 15px;
+        gap: 28px 30px;
+        padding: 0 15px 42px 15px;
+        margin: 0;
     }
 
     .help-item h4 {
         font-size: 15px;
+        margin: 13px 0 0;
     }
+
+    .help-item img {
+        width: 50px;
+        height: 50px;
+    }
+
+
+
+
 
     #donation-block {
         flex-direction: column-reverse;
         gap: 42px;
-        padding-top: 42px;
+        padding-top: 0;
         padding-bottom: 42px;
     }
 
@@ -901,56 +1043,99 @@ h5 {
         align-items: center;
         padding-left: 10px;
         padding-right: 10px;
+        margin: 0;
+        gap: 22.2px;
     }
 
     .donation-text h5 {
-        letter-spacing: 0.04em;
+        letter-spacing: 0.001em;
+    }
+
+    .donation-text h3 {
+        padding-top: 35px;
+    }
+
+    .donation-text h4 {
+        width: 281px;
+        padding: 13px 15px 13px 15px;
     }
 
     .card-number {
         font-size: 15px;
         padding-top: 3px;
         padding-bottom: 3px;
-        letter-spacing: 0.112em;
     }
 
     .donation-text p {
         text-align: justify;
+        padding: 0 10px;
     }
 
     .donation-dog {
         max-width: 260px;
     }
 
-    #contacts {
-        display: grid;
-        gap: 40px;
+    #footer {
         grid-template-areas:
             "contacts"
-            "locations"
-            "dog";
-        padding: 30px 10px 0 10px;
-    }
-
-    #contacts img {
-        justify-self: center;
-        max-width: 260px;
-
-    }
-
-    #contacts h3 {
-        padding: 0;
-        font-size: 25px;
-        text-align: center;
-        max-width: 294px;
-    }
-
-    .footer-questions {
+            "location"
+            "dog"
+        ;
+        padding: 30px 10px 0;
+        justify-items: center;
         gap: 40px;
+    }
+
+    #footer h3 {
+        font-size: 25px;
+        line-height: 32.5px;
+        width: 278px;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+    }
+
+    .list-contacts {
+        align-items: center;
+    }
+
+    #footer img {
+        max-width: 260px;
     }
 
     .footer-location {
-        width: 300px;
         gap: 40px;
     }
+
+    .list-locations {
+        gap: 40px;
+    }
+
+    .pets-modal {
+        width: 240px;
+        height: 341px;
+    }
+
+    .pet-info h3 {
+        font-size: 35px;
+        padding: 0 0 11px;
+        margin: 0;
+    }
+
+    #popup-window .pet-info {
+        align-items: center;
+        margin: 10px;
+    }
+
+    #popup-window .pet-info p {
+        text-align: justify;
+        padding-bottom: 24px;
+    }
+
+    #popup-window .close-btn {
+        top: -52px;
+        right: -26px;
+    }
+
+
 }
