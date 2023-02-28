@@ -269,6 +269,9 @@ function openCardPopup(idCard) {
     document.getElementById('popup-parasites').innerHTML = pets[idCard].parasites;
     body.classList.add('overlay');
     popup.classList.add('open');
+    if (cardsCount === 1) {
+        img.style.display = 'none';
+    }
 }
 
 popupClose.addEventListener('click', function () {
