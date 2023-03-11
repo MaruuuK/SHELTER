@@ -186,6 +186,7 @@ h1 a {
 .intro-header {
     font-size: 44px;
     color: #FFFFFF;
+    line-height: 57.2px;
 }
 
 .intro-text {
@@ -238,7 +239,7 @@ h1 a {
 
 .pets-help-header {
     text-align: center;
-    margin-top: 80px;
+    padding-top: 80px;
     line-height: 45.5px;
     margin-bottom: 60px;
 }
@@ -454,6 +455,10 @@ h5 {
     margin: 0;
 }
 
+.donation-text h3 {
+    line-height: 45.5px;
+}
+
 .donation-text h4 {
     margin: 0;
     padding: 10px 15px;
@@ -499,7 +504,7 @@ h5 {
     gap: 0 30px;
     justify-content: center;
     align-items: center;
-    padding-top: 82px;
+    padding-top: 80px;
     padding-bottom: 98px;
 }
 
