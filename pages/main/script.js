@@ -137,7 +137,7 @@ function getRandomNumber(limit) {
 }
 
 function getCardsCount() {
-    let windowWidth = document.documentElement.clientWidth;
+    let windowWidth = window.innerWidth;
 
     if (windowWidth < 768) {
         return 1;
@@ -149,7 +149,7 @@ function getCardsCount() {
 }
 
 function getSliderWidth() {
-    let windowWidth = document.documentElement.clientWidth;
+    let windowWidth = window.innerWidth;
 
     if (windowWidth < 768) {
         return 270;
